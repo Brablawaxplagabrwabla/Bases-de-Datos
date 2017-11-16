@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+
+<!-- LISTA DE PACIENTES -->
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <br><br>
+      <h4 class="col s12 light center flow-text"> Lista de Medicamentos: </h4>
+
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Nombre Comercial:</th>
+          <th class="teal-text text-accent-4">Efectos Secundarios:</th>
+          <th class="teal-text text-accent-4">Contraindicaciones:</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.forEach(medicamento, function(medicamento) { %>
+        <tr data-id="<%= medicamento.id %>" data-model="alergia" >
+          <td><%= medicamento.nombreComercial %></td>
+          <td><%= medicamento.efectosSec %></td>
+          <td><%= medicamento.contraindicaciones %></td>
+          <td>
+            <a href="/Medicamento/editar/<%= medicamento.id %>" class="material-icons teal-text text-accent-4">add_circle</a>
+          </td>
+          <td>
+            <a href="/CompActivo/show/<%= medicamento.id %>" class="material-icons teal-text text-accent-4">remove_red_eye</a>
+          </td>
+        </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <br>
+      <div class="col s12 m12 l12 center">
+        <a href="/Medicamento/nuevo/" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nuevo Medicamento</a>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</div>
+<!-- FIN LISTA DE PACIENTES -->
+
+
+</body>
+</html>
