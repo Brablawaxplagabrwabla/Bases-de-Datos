@@ -52,10 +52,10 @@ module.exports = {
   },
 
     frecuencia: function(req, res) {
-      var query = Patologia.query("SELECT patologia.NombrePat AS Nombre, COUNT(Describe_.Patologia_idPatologia) AS Frecuencia "
+      var query = Patologia.query("SELECT patologia.NombrePat AS Nombre, COUNT(describe_.Patologia_idPatologia) AS Frecuencia "
       + "From patologia "
       + "INNER JOIN describe_ "
-      + "ON patologia.idPatologia = Describe_.Patologia_idPatologia "
+      + "ON patologia.idPatologia = describe_.Patologia_idPatologia "
       + "group by patologia.NombrePat;", function(err, patologia){
       if (err) sails.log(err);
         sails.log(patologia);
