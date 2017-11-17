@@ -40,10 +40,6 @@ module.exports.routes = {
     view: 'Paciente/registrar'
   },
   
-  '/Patologia/frecuencia': {
-    view: 'Patologia/frecuencia'
-  }
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
