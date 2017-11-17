@@ -58,6 +58,7 @@ module.exports = {
       + "ON patologia.idPatologia = Describe_.Patologia_idPatologia "
       + "group by patologia.NombrePat;", function(err, patologia){
       if (err) sails.log(err);
+        sails.log(patologia);
       res.view({
       patologia: patologia,
       });
