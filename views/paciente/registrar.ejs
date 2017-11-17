@@ -1,0 +1,134 @@
+<form action="/Paciente/nuevoPaciente/" method="POST">
+
+<div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h4>Descripción del paciente</h4>
+      </div>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <input name="nombre" id="first_name" type="text" class="validate" required="" aria-required="true">
+            <label for="first_name">Nombre</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="apellido" id="last_name" type="text" class="validate" required="" aria-required="true">
+            <label for="last_name">Apellido</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="cedula" id= "cedula" type="number" class="validate" required="" aria-required="true">
+            <label for="cedula">Cédula</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="correo" id="email" type="email" class="validate" required="" aria-required="true">
+            <label for="email">Correo Electrónico</label>
+          </div>
+          <div class="input-field col s12 m6 l6" style="height: 50px" >
+            <input name="fecha_nac" id="bday" type="text" class="datepicker" placeholder="Fecha de Nacimiento">
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="nacionalidad" id="nacionalidad">
+              <option value="" disabled selected>Seleccionar nacionalidad</option>
+              <option value="Venezolano">Venezolano(a)</option>
+              <option value="Extranjero">Extranjero(a)</option>
+              <option value="Pasaporte">Pasaporte</option>
+            </select>
+            <label>Nacionalidad</label>
+          </div>
+
+          <div class="input-field col s12 m6 l6">
+            <select name="nivel_educativo" id="nivelEducativo" >
+              <option value="" disabled selected>Seleccionar nivel educativo</option>
+              <option value="Ninguna">Ninguna</option>
+              <option value="Inicial">Inicial</option>
+              <option value="Media">Media</option>
+              <option value="Diversificado">Diversificada</option>
+              <option value="Superior">Superior</option>
+            </select>
+            <label>Nivel Educativo</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="sexo" id="genero" >
+              <option value="" disabled selected>Seleccionar genero</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+            <label>Genero</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="edo_civil" id="edoCivil" >
+              <option value="" disabled selected>Seleccionar su estado civil</option>
+              <option value="Soltero">Soltero(a)</option>
+              <option value="Casado">Casado(a)</option>
+              <option value="Viudo">Viudo(a)</option>
+            </select>
+            <label>Estado Civil</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="estado" id="estado" >
+              <option value="" disabled selected>Seleccionar estado</option>
+              <option value="Distrito Capital">Distrito Capital</option>
+              <option value="Miranda">Miranda</option>
+              <option value="Vargas">Vargas</option>
+              <option value="Monagas">Monagas</option>
+              <option value="Apure">Apure</option>
+              <option value="Cojedes">Cojedes</option>
+              <option value="Tachira">Tachira</option>
+              <option value="Sucre">Sucre</option>
+              <option value="Nueva Esparta">Nueva Esparta</option>
+              <option value="Falcon">Falcón</option>
+            </select>
+            <label>Estado</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="direccion" id="direccion" type="text" class="validate" required="" aria-required="true">
+            <label for="direccion">Dirección</label>
+          </div>
+        </div>
+        <center>
+          <input class="btn waves-effect waves-light" type="submit" name="action" value="Enviar"></input>
+        </center>
+      </form>
+    </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 200, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Listo',
+        closeOnSelect: false // Close upon selecting a date,
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    var Paciente;
+    function registrarPaciente(){
+      Paciente = {
+        name: document.getElementById("first_name").value,
+        apellido: document.getElementById("last_name").value,
+        cedula: document.getElementById("cedula").value,
+        correo: document.getElementById("email").value,
+        bday: document.getElementById("bday").value,
+        nacionalidad: document.getElementById("nacionalidad").value,
+        nivelEducativo: document.getElementById("nivelEducativo").value,
+        genero: document.getElementById("genero").value,
+        edoCivil: document.getElementById("edoCivil").value,
+        estado: document.getElementById("estado").value,
+        direccion: document.getElementById("direccion").value,
+      };
+      console.log("Datos en obj Paciente.");
+      //Querys aqui palante ToDo...
+    }
+
+  </script>
+</form>

@@ -1,0 +1,222 @@
+Create database medicTypeDB;
+
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Estado` (
+  `idEstado` INT NOT NULL AUTO_INCREMENT,
+  `CodigoEdo` INT NOT NULL,
+  `Estado` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idEstado`),
+  UNIQUE INDEX `CodigoEdo_UNIQUE` (`CodigoEdo` ASC));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Paciente` (
+  `idPaciente` INT NOT NULL AUTO_INCREMENT,
+  `Cedula` INT NOT NULL,
+  `Sexo` CHAR NOT NULL,
+  `Nom1` VARCHAR(20) NOT NULL,
+  `Nom2` VARCHAR(20) NOT NULL,
+  `Ape1` VARCHAR(20) NOT NULL,
+  `Ape2` VARCHAR(20) NOT NULL,
+  `FechaNac` DATE NOT NULL,
+  `Direccion` VARCHAR(100) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Estado_idEstado` INT NOT NULL,
+  PRIMARY KEY (`idPaciente`, `Estado_idEstado`),
+  UNIQUE INDEX `Cedula_UNIQUE` (`Cedula` ASC),
+  INDEX `fk_Paciente_Estado1_idx` (`Estado_idEstado` ASC),
+  CONSTRAINT `fk_Paciente_Estado1`
+    FOREIGN KEY (`Estado_idEstado`)
+    REFERENCES `medicTypeDB`.`Estado` (`idEstado`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Especialidad` (
+  `idEspecialidad` INT NOT NULL AUTO_INCREMENT,
+  `CodEsp` INT NOT NULL,
+  `Especialidad` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idEspecialidad`),
+  UNIQUE INDEX `CodEsp_UNIQUE` (`CodEsp` ASC)); 
+  CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Especialidades` (
+  `Medico_idMedico` INT NOT NULL,
+  `Especialidad_idEspecialidad` INT NOT NULL,
+  INDEX `fk_Especialidades_Medico1_idx` (`Medico_idMedico` ASC),
+  INDEX `fk_Especialidades_Especialidad1_idx` (`Especialidad_idEspecialidad` ASC),
+  CONSTRAINT `fk_Especialidades_Medico1`
+    FOREIGN KEY (`Medico_idMedico`)
+    REFERENCES `medicTypeDB`.`Medico` (`idMedico`),
+  CONSTRAINT `fk_Especialidades_Especialidad1`
+    FOREIGN KEY (`Especialidad_idEspecialidad`)
+    REFERENCES `medicTypeDB`.`Especialidad` (`idEspecialidad`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Medico` (
+  `idMedico` INT NOT NULL AUTO_INCREMENT,
+  `Licencia` INT NOT NULL,
+  `Especialidad_idEspecialidad` INT NOT NULL,
+  PRIMARY KEY (`idMedico`, `Especialidad_idEspecialidad`),
+  UNIQUE INDEX `Licencia_UNIQUE` (`Licencia` ASC),
+  INDEX `fk_Medico_Especialidad1_idx` (`Especialidad_idEspecialidad` ASC),
+  CONSTRAINT `fk_Medico_Especialidad1`
+    FOREIGN KEY (`Especialidad_idEspecialidad`)
+    REFERENCES `medicTypeDB`.`Especialidad` (`idEspecialidad`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Consulta` (
+  `Paciente_idPaciente` INT NOT NULL,
+  `Medico_idMedico` INT NOT NULL,
+  `Motivo` VARCHAR(100) NOT NULL,
+  `FechaCon` DATE NOT NULL,
+  PRIMARY KEY (`Paciente_idPaciente`, `Medico_idMedico`),
+  INDEX `fk_Paciente_has_Medico_Medico1_idx` (`Medico_idMedico` ASC),
+  INDEX `fk_Paciente_has_Medico_Paciente1_idx` (`Paciente_idPaciente` ASC),
+  CONSTRAINT `fk_Paciente_has_Medico_Paciente1`
+    FOREIGN KEY (`Paciente_idPaciente`)
+    REFERENCES `medicTypeDB`.`Paciente` (`idPaciente`),
+  CONSTRAINT `fk_Paciente_has_Medico_Medico1`
+    FOREIGN KEY (`Medico_idMedico`)
+    REFERENCES `medicTypeDB`.`Medico` (`idMedico`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Historia` (
+  `idHistoria` INT NOT NULL AUTO_INCREMENT,
+  `FechaHis` DATE NOT NULL,
+  `Sintomas` VARCHAR(100) NOT NULL,
+  `Notas` VARCHAR(100) NULL,
+  `Peso` FLOAT NOT NULL,
+  `Estatura` FLOAT NOT NULL,
+  `Diagnostico` VARCHAR(100) NOT NULL,
+  `Intervenido` TINYINT(1) NULL,
+  `Diabetes` TINYINT(1) NULL,
+  `Hipertenso` TINYINT(1) NULL,
+  `Fumador` TINYINT(1) NULL,
+  `ReferidoPor` INT NULL,
+  PRIMARY KEY (`idHistoria`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Tiene` (
+  `Medico_idMedico` INT NOT NULL,
+  `Historia_idHistoria` INT NOT NULL,
+  `Paciente_idPaciente` INT NOT NULL,
+  PRIMARY KEY (`Medico_idMedico`, `Historia_idHistoria`, `Paciente_idPaciente`),
+  INDEX `fk_Medico_has_Historia_Historia1_idx` (`Historia_idHistoria` ASC),
+  INDEX `fk_Medico_has_Historia_Medico1_idx` (`Medico_idMedico` ASC),
+  INDEX `fk_Tiene_Paciente1_idx` (`Paciente_idPaciente` ASC),
+  CONSTRAINT `fk_Medico_has_Historia_Medico1`
+    FOREIGN KEY (`Medico_idMedico`)
+    REFERENCES `medicTypeDB`.`Medico` (`idMedico`),
+  CONSTRAINT `fk_Medico_has_Historia_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Tiene_Paciente1`
+    FOREIGN KEY (`Paciente_idPaciente`)
+    REFERENCES `medicTypeDB`.`Paciente` (`idPaciente`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Alergias` (
+  `idAlergias` INT NOT NULL AUTO_INCREMENT,
+  `Alergia` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idAlergias`),
+  UNIQUE INDEX `Alergia_UNIQUE` (`Alergia` ASC));
+  CREATE TABLE IF NOT EXISTS `medicTypeDB`.`TipoSangre` (
+  `TipoSangre` VARCHAR(5) NOT NULL,
+  `idTipoSangre` INT NOT NULL AUTO_INCREMENT,
+  UNIQUE INDEX `TipoSangre_UNIQUE` (`TipoSangre` ASC),
+  PRIMARY KEY (`idTipoSangre`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Tendra` (
+  `Historia_idHistoria` INT NOT NULL,
+  `Alergias_idAlergias` INT NOT NULL,
+  PRIMARY KEY (`Historia_idHistoria`, `Alergias_idAlergias`),
+  INDEX `fk_Historia_has_Alergias_Alergias1_idx` (`Alergias_idAlergias` ASC),
+  INDEX `fk_Historia_has_Alergias_Historia1_idx` (`Historia_idHistoria` ASC),
+  CONSTRAINT `fk_Historia_has_Alergias_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`),
+  CONSTRAINT `fk_Historia_has_Alergias_Alergias1`
+    FOREIGN KEY (`Alergias_idAlergias`)
+    REFERENCES `medicTypeDB`.`Alergias` (`idAlergias`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Patologia` (
+  `idPatologia` INT NOT NULL AUTO_INCREMENT,
+  `NombrePat` VARCHAR(100) NOT NULL,
+  `Descripcion` VARCHAR(100) NOT NULL,
+  `ModoTrans` VARCHAR(100) NOT NULL,
+  `Patogenesis` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`idPatologia`),
+  UNIQUE INDEX `NombrePat_UNIQUE` (`NombrePat` ASC));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Describe_` (
+  `Historia_idHistoria` INT NOT NULL,
+  `Patologia_idPatologia` INT NOT NULL,
+  PRIMARY KEY (`Historia_idHistoria`, `Patologia_idPatologia`),
+  INDEX `fk_Historia_has_Patologia_Patologia1_idx` (`Patologia_idPatologia` ASC),
+  INDEX `fk_Historia_has_Patologia_Historia1_idx` (`Historia_idHistoria` ASC),
+  CONSTRAINT `fk_Historia_has_Patologia_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`),
+  CONSTRAINT `fk_Historia_has_Patologia_Patologia1`
+    FOREIGN KEY (`Patologia_idPatologia`)
+    REFERENCES `medicTypeDB`.`Patologia` (`idPatologia`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`HOftalmologia` (
+  `Historia_idHistoria` INT NOT NULL,
+  `Formula` VARCHAR(45) NULL,
+  `Refraccion` VARCHAR(45) NULL,
+  INDEX `fk_HOftalmologia_Historia1_idx` (`Historia_idHistoria` ASC),
+  CONSTRAINT `fk_HOftalmologia_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`HOncologia` (
+  `Historia_idHistoria` INT NOT NULL,
+  `Metastasis` TINYINT(1) NULL,
+  `EstadoCancer` VARCHAR(45) NULL,
+  `VidaRestante` VARCHAR(45) NULL,
+  INDEX `fk_HOncologia_Historia1_idx` (`Historia_idHistoria` ASC),
+  CONSTRAINT `fk_HOncologia_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`HPediatria` (
+  `Historia_idHistoria` INT NOT NULL,
+  `AnchoCabeza` FLOAT NULL,
+  `DiametroBrazos` FLOAT NULL,
+  `Crecimiento` VARCHAR(200) NULL,
+  INDEX `fk_HPediatra_Historia1_idx` (`Historia_idHistoria` ASC),
+  CONSTRAINT `fk_HPediatra_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Medicamento` (
+  `idMedicamento` INT NOT NULL AUTO_INCREMENT,
+  `NomComercial` VARCHAR(100) NOT NULL,
+  `EfectosSec` VARCHAR(100) NOT NULL,
+  `Contraindicaciones` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`idMedicamento`),
+  UNIQUE INDEX `NomComercial_UNIQUE` (`NomComercial` ASC));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Tratamiento` (
+  `Historia_idHistoria` INT NOT NULL,
+  `Medicamento_idMedicamento` INT NOT NULL,
+  `Posologia` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Historia_idHistoria`, `Medicamento_idMedicamento`),
+  INDEX `fk_Historia_has_Medicamento_Medicamento1_idx` (`Medicamento_idMedicamento` ASC),
+  INDEX `fk_Historia_has_Medicamento_Historia1_idx` (`Historia_idHistoria` ASC),
+  CONSTRAINT `fk_Historia_has_Medicamento_Historia1`
+    FOREIGN KEY (`Historia_idHistoria`)
+    REFERENCES `medicTypeDB`.`Historia` (`idHistoria`),
+  CONSTRAINT `fk_Historia_has_Medicamento_Medicamento1`
+    FOREIGN KEY (`Medicamento_idMedicamento`)
+    REFERENCES `medicTypeDB`.`Medicamento` (`idMedicamento`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`SimilarA` (
+  `Medicamento_idMedicamento` INT NOT NULL,
+  `Medicamento_idMedicamento1` INT NOT NULL,
+  PRIMARY KEY (`Medicamento_idMedicamento`, `Medicamento_idMedicamento1`),
+  INDEX `fk_Medicamento_has_Medicamento_Medicamento2_idx` (`Medicamento_idMedicamento1` ASC),
+  INDEX `fk_Medicamento_has_Medicamento_Medicamento1_idx` (`Medicamento_idMedicamento` ASC),
+  CONSTRAINT `fk_Medicamento_has_Medicamento_Medicamento1`
+    FOREIGN KEY (`Medicamento_idMedicamento`)
+    REFERENCES `medicTypeDB`.`Medicamento` (`idMedicamento`),
+  CONSTRAINT `fk_Medicamento_has_Medicamento_Medicamento2`
+    FOREIGN KEY (`Medicamento_idMedicamento1`)
+    REFERENCES `medicTypeDB`.`Medicamento` (`idMedicamento`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Telefonos` (
+  `Telefono` INT NOT NULL,
+  `Paciente_idPaciente` INT NOT NULL,
+  INDEX `fk_Telefonos_Paciente_idx` (`Paciente_idPaciente` ASC),
+  CONSTRAINT `fk_Telefonos_Paciente`
+    FOREIGN KEY (`Paciente_idPaciente`)
+    REFERENCES `medicTypeDB`.`Paciente` (`idPaciente`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`Consultorio` (
+  `Consultorio` VARCHAR(100) NOT NULL,
+  `Medico_idMedico` INT NOT NULL,
+  INDEX `fk_Consultorio_Medico1_idx` (`Medico_idMedico` ASC),
+  CONSTRAINT `fk_Consultorio_Medico1`
+    FOREIGN KEY (`Medico_idMedico`)
+    REFERENCES `medicTypeDB`.`Medico` (`idMedico`));
+CREATE TABLE IF NOT EXISTS `medicTypeDB`.`CompActivos` (
+  `CompActivos` VARCHAR(100) NOT NULL,
+  `Medicamento_idMedicamento` INT NOT NULL,
+  INDEX `fk_CompActivos_Medicamento1_idx` (`Medicamento_idMedicamento` ASC),
+  CONSTRAINT `fk_CompActivos_Medicamento1`
+    FOREIGN KEY (`Medicamento_idMedicamento`)
+    REFERENCES `medicTypeDB`.`Medicamento` (`idMedicamento`))
+ENGINE = InnoDB
