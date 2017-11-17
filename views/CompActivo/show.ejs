@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+
+<!-- LISTA DE PACIENTES -->
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <br><br>
+      <h4 class="col s12 light center flow-text"> <%= medicamento[0].nombreComercial%> </h4>
+
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Compuesto activo:</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.forEach(compactivos, function(compactivos) { %>
+        <tr data-id="<%= compactivos.medicamento %>" data-model="alergia" >
+          <td><%= compactivos.compActivo %></td>
+          <td>
+            <a href="/Medicamento/verNoTienen/<%= compactivos.compActivo %>" class="material-icons teal-text text-accent-4">not_interested</a>
+            <a href="/Medicamento/verMedicamentos/<%= compactivos.compActivo %>" class="material-icons teal-text text-accent-4">remove_red_eye</a>
+          </td>
+        </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <br>
+      <div class="col s12 m12 l12 center">
+        <a href="/CompActivo/nuevo/<%=medicamento[0].id%>" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Añadir Compuesto Activo</a>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</div>
+<!-- FIN LISTA DE PACIENTES -->
+
+
+</body>
+</html>

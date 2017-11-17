@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title></title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- FIN CSS -->
+</head>
+<body>
+
+
+<div class="container">
+  <div class="section">
+  <div class="row">
+
+    <form method="POST" action="/Medico/topMedicos/" class="col l4">  
+      <a type="submit" href="/Medico/topMedicos" class=" waves-effect waves-light btn-large ">Mejores Medicos</a>
+    </form>
+    <form  method="POST" action="/Medico/listaMedicos/" class="col l8">
+  <button class="btn waves-effect waves-light btn-large col l6" type="submit" name="action" value='0'>Ver medicos
+    <i class="material-icons right">send</i>
+  </button>  
+    <div style="margin-top: 0px; height: 55px;; color: whitesmoke;" class="input-field card-panel teal lighten-1 col l6">
+      <select name="idEspecialidad" id="idEspecialidad">
+        <option value="0" selected>Todos</option>
+        <option value="1">Pediatra</option>
+        <option value="2">Oftalmologo</option>
+        <option value="3">Oncologo</option>
+      </select>
+  </div> 
+  </form>
+
+</div>
+
+
+
+    <div class="row">
+      <br><br>
+      <h4 class="col s12 light center">Datos del paciente:</h4>
+
+          <form>
+            <div class="center-align col s12 m12 l12">
+              <h1 class="flow-text">
+                <i class="material-icons prefix">account_circle</i>
+                <%= paciente.nombre1 %> <%= paciente.nombre2%> <%= paciente.apellido1 %> <%= paciente.apellido2 %>
+              </h1>
+            </div>
+            <div class="flow-text col s6 m6 l6">
+              <p>Cédula: <%= paciente.cedula %></p>
+            </div>
+            <div class="flow-text col s6 m6 l6">
+              <p>Sexo: <%= paciente.sexo %></p>
+            </div>  
+            
+            <div class="flow-text col s6 m6 l6">
+              <p>Fecha de Nacimiento: <%= paciente.fecha_nac %></p>
+            </div>
+            <div class="flow-text col s6 m6 l6">
+              <p>Direccion: <%= paciente.direccion %></p>
+            </div>
+            
+            <div class="flow-text col s6 m6 l6">
+              <p>Estado: <%= estado[0].estadovive %></p>
+            </div>
+            <div class="flow-text col s6 m6 l6">
+              <p>Tipo de Sangre: <%= tiposangre[0].tipodesangre %></p>
+            </div>
+
+            <div class="flow-text col s6 m6 l6">
+              <p>Email: <%= paciente.email %></p>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Fecha:</th>
+          <th class="teal-text text-accent-4">Sintomas:</th>
+          <th class="teal-text text-accent-4">Notas:</th>
+          <th class="teal-text text-accent-4">Peso:</th>
+          <th class="teal-text text-accent-4">Estatura:</th>
+          <th class="teal-text text-accent-4">Diagnóstico:</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(historias, function (historias){ %>
+        <tr data-id="<%= historias.idHistoria %>" data-model="alergia" >
+          <td><%= historias.FechaHis %></td>
+          <td><%= historias.Sintomas %></td>
+          <td><%= historias.Notas %></td>
+          <td><%= historias.Peso %> Kg.</td>
+          <td><%= historias.Estatura %> m.</td>
+          <td><%= historias.Diagnostico %></td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+
+    <br><br>
+        <table class="highlight centered">
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Teléfonos:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(telefonos, function (telefonos){ %>
+        <tr data-id="<%= telefonos.persona %>" data-model="telefono" >
+          <td>
+            <i class="material-icons prefix">phone</i>
+            <%= telefonos.telefono %>
+              
+            </td>
+          <td>
+            <a href="/Telefono/bye/<%= telefonos.persona%>+<%= telefonos.telefono %>" class="material-icons teal-text text-accent-4">delete</a>
+          </td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+
+    <div class="row">
+      <br>
+      <div class="col s12 m12 l12 center">
+        <a href="/Telefono/nuevo/<%= paciente.id %>" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nuevo telefono</a>
+      </div>
+    </div>
+
+  
+  <br><br>
+</div>
+<!-- FIN LISTA DE PACIENTES -->
+
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.parallax').parallax();
+  });
+</script>
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+});
+</script>
+</body>
+</html>
+

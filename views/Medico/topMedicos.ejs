@@ -1,0 +1,25 @@
+        <br><br>
+        <div style="text-align:center">
+        <h3>Nuestros mejores medicos</h4>
+       	</div>
+        
+       <table class="highlight centered">
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Nombre:</th>
+          <th class="teal-text text-accent-4">Especialidad:</th>
+          <th class="teal-text text-accent-4">Cantidad de Consultas Hechas:</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(matriz, function (matriz){ %>
+        <tr data-id="<%= matriz.NombreCompleto %>" data-model="Nombre" >
+          <td><%= matriz.NombreCompleto %></td>
+          <td><%= matriz.Especialidad %></td>
+          <td><%= matriz.Consultas %></td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+      <br><br>

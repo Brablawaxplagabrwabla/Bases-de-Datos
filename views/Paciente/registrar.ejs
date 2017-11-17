@@ -1,0 +1,129 @@
+<form action="/Paciente/nuevoPaciente/" method="POST">
+
+<div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h4>Descripción del paciente</h4>
+      </div>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <input name="nombre1" id="first_name" type="text" class="validate" required="" aria-required="true">
+            <label for="first_name">Primer Nombre</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="nombre2" id="second_first_name" type="text" class="validate" required="" aria-required="true">
+            <label for="second_first_name">Segundo Nombre</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="apellido1" id="last_name" type="text" class="validate" required="" aria-required="true">
+            <label for="last_name">Primer Apellido</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="apellido2" id="second_lastname" type="text" class="validate" required="" aria-required="true">
+            <label for="second_lastname">Segundo Apellido</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="cedula" id= "cedula" type="number" class="validate" required="" aria-required="true">
+            <label for="cedula">Cédula</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="correo" id="email" type="email" class="validate" required="" aria-required="true">
+            <label for="email">Correo Electrónico</label>
+          </div>
+          <div class="input-field col s12 m6 l6" style="height: 50px" >
+            <input name="fecha_nac" id="bday" type="text" class="datepicker" placeholder="Fecha de Nacimiento">
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="tiposangre" id="tiposangre">
+              <option value="" disabled selected>Seleccionar tipo de sangre</option>
+              <option value="1">O-</option>
+              <option value="2">O+</option>
+              <option value="3">A-</option>
+              <option value="4">A+</option>
+              <option value="5">B-</option>
+              <option value="6">B+</option>
+              <option value="7">AB-</option>
+              <option value="8">AB+</option>
+            </select>
+            <label>Tipo de Sangre</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="sexo" id="genero" >
+              <option value="" disabled selected>Seleccionar genero</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+            <label>Genero</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <select name="estado" id="estado" >
+              <option value="" disabled selected>Seleccionar estado</option>
+              <option value="1">Amazonas</option>
+              <option value="2">Anzoategui</option>
+              <option value="3">Apure</option>
+              <option value="4">Aragua</option>
+              <option value="5">Barinas</option>
+              <option value="6">Bolivar</option>
+              <option value="7">Carabobo</option>
+              <option value="8">Cojedes</option>
+              <option value="9">Delta Amacuro</option>
+              <option value="10">Distrito Capital</option>
+              <option value="11">Falcon</option>
+              <option value="12">Miranda</option>
+              <option value="13">Lara</option>
+            </select>
+            <label>Estado</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input name="direccion" id="direccion" type="text" class="validate" required="" aria-required="true">
+            <label for="direccion">Dirección</label>
+          </div>
+        </div>
+        <center>
+          <input class="btn waves-effect waves-light" type="submit" name="action" value="Enviar"></input>
+        </center>
+      </form>
+    </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 200, // Creates a dropdown of 15 years to control year,
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Listo',
+        closeOnSelect: false // Close upon selecting a date,
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    var Paciente;
+    function registrarPaciente(){
+      Paciente = {
+        name: document.getElementById("first_name").value,
+        apellido: document.getElementById("last_name").value,
+        cedula: document.getElementById("cedula").value,
+        correo: document.getElementById("email").value,
+        bday: document.getElementById("bday").value,
+        nacionalidad: document.getElementById("nacionalidad").value,
+        nivelEducativo: document.getElementById("nivelEducativo").value,
+        genero: document.getElementById("genero").value,
+        edoCivil: document.getElementById("edoCivil").value,
+        estado: document.getElementById("estado").value,
+        direccion: document.getElementById("direccion").value,
+      };
+      console.log("Datos en obj Paciente.");
+      //Querys aqui palante ToDo...
+    }
+
+  </script>
+</form>
