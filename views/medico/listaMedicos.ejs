@@ -1,0 +1,25 @@
+        <br><br>
+        <div style="text-align:center">
+        <h4>Estos son nuestros medicos especializados en <%=tipo%>:</h4>
+       	</div>
+        
+       <table class="highlight centered">
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Nombre:</th>
+          <th class="teal-text text-accent-4">Apellido:</th>
+          <th class="teal-text text-accent-4">Licencia:</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(matriz, function (matriz){ %>
+        <tr data-id="<%= matriz.idMedico %>" data-model="idMedico">
+          <td><%= matriz.Nombre %></td>
+          <td><%= matriz.Apellido %></td>
+          <td><%= matriz.Licencia %></td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+      <br><br>

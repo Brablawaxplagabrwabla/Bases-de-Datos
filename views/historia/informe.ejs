@@ -1,0 +1,40 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+
+      <div class="col s12 m12 l12">
+        <h4 class="flow-text center teal-text text-accent-4">Informe de <%= especialidad %>:</h4>
+      </div>
+    </div>
+
+    <p class="flow-text">Paciente: <%= paciente[0].nombre1 %> <%= paciente[0].apellido1 %></p>
+    <p class="flow-text">Fecha de historia: <%= historia[0].fechaHist %></p>
+    <p class="flow-text">Sexo: <%= paciente[0].sexo %></p>
+    <p class="flow-text">Fecha de nacimiento: <%=paciente[0].fecha_nac %></p>
+
+
+    <p class="flow-text">Paciente de sexo <%= sexo %>, de estatura <%= historia[0].estatura %> m, peso <%= historia[0].peso %> Kg. Indica que <%= intervenido %> ha sido intervenido anteriormente, <%= hipertenso %> presenta problemas relacionados con hipertensión, <%= diabetes %> es diabético, <%= fumador %> es fumador.</p>
+
+    <p class="flow-text">DIAGNOSTICO: <%= historia[0].diagnostico %></p>
+    <p class="flow-text">SINTOMAS: <%= historia[0].sintomas %> </p>
+    <p class="flow-text">NOTAS: <%= historia[0].notas %> </p>
+
+    <p class="flow-text">RESULTADOS:</p>
+
+    <table >
+      <tr>
+        <td><%= item1 %></td>
+        <td><%= punto1 %></td>
+      </tr>
+      <tr>
+        <td><%= item2 %></td>
+        <td><%= punto2 %></td>
+      </tr>
+      <tr>
+        <td><%= item3 %></td>
+        <td><%= punto3 %></td>
+      </tr>
+
+    </table>
+  </form>
+</div>

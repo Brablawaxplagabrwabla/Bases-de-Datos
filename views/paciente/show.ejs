@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+
+<!-- LISTA DE PACIENTES -->
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <br><br>
+      <h4 class="col s12 light center flow-text">Datos del paciente: <%= paciente.nombre1 %> <%= paciente.nombre2%> <%= paciente.apellido1 %> <%= paciente.apellido2%></h4>
+
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Cédula:</th>
+          <th class="teal-text text-accent-4">Sexo:</th>
+          <th class="teal-text text-accent-4">Fecha de Nacimiento:</th>
+          <th class="teal-text text-accent-4">Tipo de Sangre:</th>
+          <th class="teal-text text-accent-4">Correo:</th>
+          <th class="teal-text text-accent-4">Estado:</th>
+          <th class="teal-text text-accent-4">Dirección:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-id="<%= historias.idHistoria %>" data-model="alergia" >
+          <td><%= paciente.cedula %></td>
+          <td><%= paciente.sexo %></td>
+          <td><%= paciente.fecha_nac %></td>
+          <td><%= tiposangre.tiposangre %></td>
+          <td><%= paciente.email %></td>
+          <td><%= estado.estado %></td>
+          <td><%= paciente.direccion %></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Fecha:</th>
+          <th class="teal-text text-accent-4">Sintomas:</th>
+          <th class="teal-text text-accent-4">Notas:</th>
+          <th class="teal-text text-accent-4">Peso:</th>
+          <th class="teal-text text-accent-4">Estatura:</th>
+          <th class="teal-text text-accent-4">Int.:</th>
+          <th class="teal-text text-accent-4">Diab.:</th>
+          <th class="teal-text text-accent-4">Hip.:</th>
+          <th class="teal-text text-accent-4">Fum.:</th>
+          <th class="teal-text text-accent-4">Diagnóstico:</th>
+          <th class="teal-text text-accent-4">Referido Por:</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(historias, function (historias){ %>
+        <tr data-id="<%= historias.idHistoria %>" data-model="alergia" >
+          <td><%= historias.FechaHis %></td>
+          <td><%= historias.Sintomas %></td>
+          <td><%= historias.Notas %></td>
+          <td><%= historias.Peso %> Kg.</td>
+          <td><%= historias.Estatura %> m.</td>
+          <td><%= intervenido %> </td>
+          <td><%= diabetico %> </td>
+          <td><%= hipertenso %> </td>
+          <td><%= fumador %> </td>
+          <td><%= historias.Diagnostico %></td>
+          <td><%= historias.Apellido %></td>
+          <td>
+            <a href="/Historia/editar/<%= historias.idHistoria %>" class="material-icons teal-text text-accent-4">add_circle</a>
+            <a href="/Historia/informe/<%= historias.idHistoria %>" class="material-icons teal-text text-accent-4">format_indent_increase</a>
+          </td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+      <div class="row">
+        <br>
+        <div class="col s12 m12 l12 center">
+          <a href="/Historia/nuevo/<%= paciente.id %>+<%= medico.id %>" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nueva historia</a>
+        </div>
+      </div>
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Alergia a:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(alergias, function (alergias){ %>
+        <tr data-id="<%= alergias.afectado %>" data-model="alergia" >
+          <!-- alergia -->
+          <td><%= alergias.alergia %></td>
+          <td>
+            <a href="/Alergia/bye/<%= alergias.afectado%>+<%= alergias.alergia%>" class="material-icons teal-text text-accent-4">delete</a>
+          </td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+
+      <div class="row">
+        <br>
+        <div class="col s12 m12 l12 center">
+          <a href="/Alergia/nuevo/<%= paciente.id %>" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nueva alergia</a>
+        </div>
+      </div>
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Teléfono:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(telefonos, function (telefonos){ %>
+        <tr data-id="<%= telefonos.persona %>" data-model="telefono" >
+          <!-- alergia -->
+          <td><%= telefonos.telefono %></td>
+          <td>
+            <a href="/Telefono/bye/<%= telefonos.persona%>+<%= telefonos.telefono %>" class="material-icons teal-text text-accent-4">delete</a>
+          </td>
+        </tr>
+        </tbody>
+        <% })%>
+      </table>
+    </div>
+    <div class="row">
+      <br>
+      <div class="col s12 m12 l12 center">
+        <a href="/Telefono/nuevo/<%= paciente.id %>" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nuevo telefono</a>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</div>
+<!-- FIN LISTA DE PACIENTES -->
+
+
+</body>
+</html>

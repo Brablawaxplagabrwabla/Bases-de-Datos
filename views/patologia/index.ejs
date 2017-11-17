@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+<!-- LISTA DE PACIENTES -->
+<div  class="container">
+  <div class="section">
+    <div class="row">
+      <br>
+      <h4 class="col s12 light center flow-text teal-text text-accent-4">Lista de Patologías</h4>
+      <br>
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Nombre</th>
+          <th class="teal-text text-accent-4">Descripción</th>
+          <th class="teal-text text-accent-4">Transmisión</th>
+          <th class="teal-text text-accent-4">Patogénesis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(patologia, function (patologia){ %>
+        <tr data-id="<%= patologia.id %>" data-model="paciente" >
+          <!-- NOMBRE -->
+          <td><%= patologia.nombre %></td>
+          <!-- APELLIDO -->
+          <td><%= patologia.descripcion %></td>
+          <!-- SEXO -->
+          <td><%= patologia.transmision %></td>
+          <!-- CEDULA -->
+          <td><%= patologia.patogenesis %></td>
+          <td>
+            <a href="/Patologia/editar/<%= patologia.id %>" class="material-icons teal-text text-accent-4">add_circle</a>
+            <a href="/Patologia/delete/<%= patologia.id %>" class="material-icons teal-text text-accent-4">delete</a>
+          </td>
+        </tr>
+        </tbody>
+        <% }) %>
+      </table>
+    </div>
+    <div class="row">
+
+      <div class="col s12 m3 l6 center">
+        <a href="/Patologia/nuevo/" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nueva Patología</a>
+      </div>
+      <div class="col s12 m3 l6 center">
+        <a href="/Patologia/frecuencia/" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Ver frecuencias de aparición</a>
+      </div>
+
+    </div>
+
+  </div>
+  <br><br>
+</div>
+<!-- FIN LISTA DE PACIENTES -->
+
+</body>
+</html>
+
