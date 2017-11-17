@@ -42,11 +42,12 @@ module.exports.connections = {
   ***************************************************************************/
   myDataBase: {
     adapter: 'sails-mysql',
-    host: 'localhost',
-    user: 'root', //optional
-    password: '25217545max', //optional
+    host: 'kavfu5f7pido12mr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'hoeyizbddk5yfbas', //optional
+    password: 'z11c19ibt769fu51', //optional
     database: 'medictypedb', //optional
-    schema: true
+    schema: true,
+    port: '3306'
   },
 
   /***************************************************************************
