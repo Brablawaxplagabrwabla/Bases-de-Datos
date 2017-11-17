@@ -53,7 +53,7 @@ module.exports = {
 
     frecuencia: function(req, res) {
       var query = Patologia.query("SELECT patologia.NombrePat AS Nombre, COUNT(Describe_.Patologia_idPatologia) AS Frecuencia "
-      + "From Patologia "
+      + "From patologia "
       + "INNER JOIN describe_ "
       + "ON patologia.idPatologia = Describe_.Patologia_idPatologia "
       + "group by patologia.NombrePat;", function(err, patologia){
