@@ -1,0 +1,109 @@
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Estado.csv"
+into table estado
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Paciente.csv"
+into table paciente
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Especialidad.csv"
+into table especialidad
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Medico.csv"
+into table medico
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Especialidades.csv"
+into table especialidades
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Consulta.csv"
+into table consulta
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Historia.csv"
+into table historia
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Tiene.csv"
+into table tiene
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Alergias.csv"
+into table alergias
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Tendra.csv"
+into table tendra
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Patologia.csv"
+into table patologia
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Describe_.csv"
+into table describe_
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/HOftalmologia.csv"
+into table hoftalmologia
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/HOncologia.csv"
+into table honcologia
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/HPediatria.csv"
+into table hpediatria
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Medicamento.csv"
+into table medicamento
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Tratamiento.csv"
+into table tratamiento
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/SimilarA.csv"
+into table similara
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Telefonos.csv"
+into table telefonos
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/Consultorio.csv"
+into table consultorio
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/CompActivos.csv"
+into table compactivos
+fields terminated by ';'
+lines terminated by '\n';
+
+load data local infile "C:/Users/Gabriele Troncone/Bases-de-datos/DATOS/TipoSangre.csv"
+into table tiposangre
+fields terminated by ';'
+lines terminated by '\n';

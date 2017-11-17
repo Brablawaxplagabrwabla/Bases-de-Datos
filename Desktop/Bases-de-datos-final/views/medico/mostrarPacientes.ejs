@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+
+<!-- LISTA DE PACIENTES -->
+<div style="height: 75vh;" class="container">
+  <div class="section">
+    <div class="row">
+      <br>
+      <h4 class="col s12 light center flow-text teal-text text-accent-4">Lista de Pacientes</h4>
+      <br>
+      <table class="highlight centered">
+
+        <thead>
+        <tr>
+          <th class="teal-text text-accent-4">Nombre</th>
+          <th class="teal-text text-accent-4">Apellido</th>
+          <th class="teal-text text-accent-4">Sexo</th>
+          <th class="teal-text text-accent-4">Cédula</th>
+          <th class="teal-text text-accent-4">Correo Electrónico</th>
+          <th class="teal-text text-accent-4">Opciones de Historia</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(paciente, function (paciente){ %>
+        <tr data-id="<%= paciente.id %>" data-model="paciente" >
+          <!-- NOMBRE -->
+          <td><%= paciente.Nombre %></td>
+          <!-- APELLIDO -->
+          <td><%= paciente.Apellido %></td>
+          <!-- SEXO -->
+          <td><%= paciente.Sexo %></td>
+          <!-- CEDULA -->
+          <td><%= paciente.Cedula %></td>
+          <!-- CORREO ELECTRONICO -->
+          <td><%= paciente.Correo %></td>
+          <td>
+            <a href="/Paciente/editar/<%= paciente.idPaciente %>" class="material-icons teal-text text-accent-4">add_circle</a>
+            <a href="/Paciente/show/<%= paciente.idPaciente %>+<%= medico.id %>" class="material-icons teal-text text-accent-4">remove_red_eye</a>
+            <a href="/Paciente/delete/<%= paciente.idPaciente %>" class="material-icons teal-text text-accent-4">delete</a>
+          </td>
+        </tr>
+        </tbody>
+        <% }) %>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col s12 m12 l12 center">
+        <a href="/Paciente/nuevo/<%= medico.id %>" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Nuevo Paciente</a>
+        <a href="/Patologia/index/" class="btn waves-effect waves-light teal accent-4" type="submit" name="action">Lista de Patologías</a>
+      </div>
+
+    </div>
+
+  </div>
+  <br><br>
+</div>
+<!-- FIN LISTA DE PACIENTES -->
+
+</body>
+</html>
+
