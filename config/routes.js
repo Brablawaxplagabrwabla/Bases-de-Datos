@@ -37,7 +37,7 @@ module.exports.routes = {
   },
 
   '/Paciente/Registro': {
-    view: 'Paciente/registrar'
+    view: 'paciente/registrar'
   },
 
   /***************************************************************************
