@@ -75,7 +75,12 @@ module.exports = {
                     notas: 'Sin definir',
                     peso: 0,
                     estatura: 0,
-                    diagnostico: 'Sin definir'
+                    diagnostico: 'Sin definir',
+                    intervenido: 0,
+                    diabetes: 0,
+                    hipertenso: 0,
+                    fumador: 0,
+                    referidoPor: 10000
                   }).exec( function(err, historia) {
                     if (err) sails.log(err);
                     Tiene.create({
@@ -138,10 +143,8 @@ module.exports = {
                       'on historia.ReferidoPor = medico.idMedico and ('+aux+')', function(err, result){
                       if (!result) {
                         res.redirect('/');
-                        return;
                       }
                       aux2 = JSON.parse(JSON.stringify(result));
-                      aux2 = aux2;
                       var intervenido;
                       var diabetes;
                       var hipertenso;
@@ -176,6 +179,7 @@ module.exports = {
                         alergias: alergia,
                         telefonos: telefono,
                         medico: medico,
+                        tiposangre: tiposangre[0],
                         estado: estado[0],
                         intervenido: intervenido,
                         hipertenso: hipertenso,
@@ -197,7 +201,7 @@ module.exports = {
                       hipertenso: null,
                       diabetico: null,
                       fumador: null,
-                      historias: null,
+                      historias: null
                     });
                   }
                 });
@@ -211,7 +215,6 @@ module.exports = {
 
   showPaciente: function (req, res) {
     var pacientes = req.param('cedula');
-    sails.log(pacientes);
     Paciente.findOne({cedula: pacientes}).exec(function (err, paciente) {
         if(paciente){
         Telefono.find({persona: paciente.id}).exec(function (err, telefono) {
@@ -231,7 +234,6 @@ module.exports = {
               }
               var aux2 = Historia.query('select * from historia where '+aux, function(err, result){
                 if (!result) {
-                sails.log(1);
                   res.view({
                   paciente: paciente,
                   telefonos: telefono,
@@ -242,8 +244,6 @@ module.exports = {
                   return;
                 }
                 aux2 = JSON.parse(JSON.stringify(result));
-                aux2 = aux2;
-                sails.log(2);
                 res.view({
                   paciente: paciente,
                   telefonos: telefono,
@@ -254,7 +254,6 @@ module.exports = {
               })
               }
               else {
-                sails.log(3);
                 res.view({
                   paciente: paciente,
                   telefonos: telefono,
@@ -276,20 +275,26 @@ module.exports = {
 
 
   delete: function (req, res) {
-  var historiasABorrar = Tiene.query('select Historia_idHistoria from tiene where Paciente_idPaciente = ' + req.param('id'),
-    function (err, historia) {
-      historiasABorrar = JSON.parse(JSON.stringify(historia));
-      sails.controllers.describe.delete(historiasABorrar, res);
-      sails.controllers.alergia.delete(req, res);
-      sails.controllers.telefono.delete(req, res);
-      sails.controllers.tiene.delete(req, res);
-      sails.controllers.historia.delete(historiasABorrar, res);
-      Paciente.destroy(req.param('id')).exec(function (err) {
-        if (err) {
-          sails.log(err)
-        }
+    Alergia.destroy({
+      afectado: req.param('id')
+    }).exec(function(err){
+      if (err) sails.log(err);
+      Telefono.destroy({
+        persona: req.param('id')
+      }).exec(function(err){
+        if(err) sails.log(err);
+        Consulta.destroy({
+          paciente: req.param('id')
+        }).exec(function(err){
+          if (err) sails.log(err);
+          Tiene.destroy({
+            paciente: req.param('id')
+          }).exec(function(err){
+            if (err) sails.log(err);
+            res.redirect('back');
+          });
+        });
       });
-      res.redirect('back');
     });
   },
 
@@ -326,4 +331,3 @@ module.exports = {
   }
 
 };
-
