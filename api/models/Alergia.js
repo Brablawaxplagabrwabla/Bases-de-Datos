@@ -25,6 +25,7 @@ module.exports = {
     afectado: {
       type: 'integer',
       required: true,
+      primaryKey: true,
       columnName: 'Paciente_idPaciente'
     }
 

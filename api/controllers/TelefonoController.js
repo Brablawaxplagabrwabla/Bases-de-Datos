@@ -21,7 +21,7 @@ module.exports = {
       telefono: req.param('telefono')
     }).exec( function (err, telefono) {
       if (err) sails.log(err);
-      Paciente.findOne({id: req.param('persona')}).exec(function (err, paciente) { 
+      Paciente.findOne({id: req.param('persona')}).exec(function (err, paciente) {
         if (err) sails.log(err);
         Telefono.find({persona: paciente.id}).exec(function (err, telefono) {
           if (err) sails.log(err);
@@ -53,8 +53,7 @@ module.exports = {
                   return;
                 }
                 aux2 = JSON.parse(JSON.stringify(result));
-                aux2 = aux2;
-                res.view('Paciente/showPaciente/',{
+                res.view('back',{
                   paciente: paciente,
                   telefonos: telefono,
                   historias: aux2,
@@ -64,7 +63,7 @@ module.exports = {
               })
               }
               else {
-                res.view('Paciente/showPaciente/',{
+                res.view('back',{
                   paciente: paciente,
                   telefonos: telefono,
                   historias: null,
@@ -75,7 +74,7 @@ module.exports = {
             });
               });
             });
-          
+
         });
       });
     });

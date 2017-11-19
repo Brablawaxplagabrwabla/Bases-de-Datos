@@ -255,7 +255,7 @@ CREATE TABLE `historia` (
 
 LOCK TABLES `historia` WRITE;
 /*!40000 ALTER TABLE `historia` DISABLE KEYS */;
-INSERT INTO `historia` VALUES (1,'2016-05-06','No aplica','Ninguna',80,1.85,'Crecimiento adecuado',0,0,0,1,2),(2,'2004-06-17','Presenta infeccion en los ojos','Ninguna',75,1.75,'Infeccion en los ojos',0,0,1,0,0),(3,'2017-10-13','Estres','Ninguna',68,1.65,'Cancer de cerebro',0,1,0,0,1),(4,'2015-09-08','Dolor de cabeza, posible migrana','Ninguna',79,1.77,'Migrana',1,0,0,0,0),(5,'1900-12-31','Sin definir','Sin definir',0,0,'Sin definir',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `historia` VALUES (1,'2016-05-06','No aplica','Ninguna',80,1.85,'Crecimiento adecuado',0,0,0,1,2),(2,'2004-06-17','Presenta infeccion en los ojos','Ninguna',75,1.75,'Infeccion en los ojos',0,0,1,0,10000),(3,'2017-10-13','Estres','Ninguna',68,1.65,'Cancer de cerebro',0,1,0,0,1),(4,'2015-09-08','Dolor de cabeza, posible migrana','Ninguna',79,1.77,'Migrana',1,0,0,0,10000);
 /*!40000 ALTER TABLE `historia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,7 +389,7 @@ CREATE TABLE `medico` (
 
 LOCK TABLES `medico` WRITE;
 /*!40000 ALTER TABLE `medico` DISABLE KEYS */;
-INSERT INTO `medico` VALUES (1,111,'Abraham','Chang\r'),(2,222,'Maximiliano','Casale\r'),(3,333,'Gabriel','Dellelis\r'),(4,444,'Gabriele','Troncone\r'),(5,555,'Rafael','Matienzo\r');
+INSERT INTO `medico` VALUES (1,111,'Abraham','Chang\r'),(2,222,'Maximiliano','Casale\r'),(3,333,'Gabriel','Dellelis\r'),(4,444,'Gabriele','Troncone\r'),(5,555,'Rafael','Matienzo\r'),(10000,10000,'-','-');
 /*!40000 ALTER TABLE `medico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -428,7 +428,7 @@ CREATE TABLE `paciente` (
 
 LOCK TABLES `paciente` WRITE;
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (1,26500400,'M','Abraham','E','Chang','G','1998-05-30','Guatire, Municipio Plazas','achang@gmail.com',12,1),(2,26501401,'F','Sara','Y','Macayo','L','1995-01-12','Catia, Municipio Libertador','smacayo@gmail.com',10,2),(3,26502402,'F','Estefania','P','Buitrago','S','1997-09-05','Manzanares','ebuitrago@gmail.com',10,3),(4,26503403,'F','Andrea','E','Guerrero','G','1997-01-20','Guatire, Las rosas','aguerrero@gmail.com',12,4),(5,25217545,'M','Maximiliano','Sebastian','Casale','Lara','1994-01-19','Macaracuay','mcasale@correo.unimet.edu.ve',12,2),(6,24209659,'M','Isabella','Margarita','De Sanctis','Marques','1995-12-12','Cafetal','idesanctis@correo.unimet.edu.ve',10,2);
+INSERT INTO `paciente` VALUES (1,26500400,'M','Abraham','E','Chang','G','1998-05-30','Guatire, Municipio Plazas','achang@gmail.com',12,1),(2,26501401,'F','Sara','Y','Macayo','L','1995-01-12','Catia, Municipio Libertador','smacayo@gmail.com',10,2),(3,26502402,'F','Estefania','P','Buitrago','S','1997-09-05','Manzanares','ebuitrago@gmail.com',10,3),(4,26503403,'F','Andrea','E','Guerrero','G','1997-01-20','Guatire, Las rosas','aguerrero@gmail.com',12,4),(5,25217545,'M','Maximiliano','Sebastian','Casale','Lara','1994-01-19','Macaracuay','mcasale@correo.unimet.edu.ve',12,2);
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -540,7 +540,7 @@ CREATE TABLE `tiene` (
 
 LOCK TABLES `tiene` WRITE;
 /*!40000 ALTER TABLE `tiene` DISABLE KEYS */;
-INSERT INTO `tiene` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(1,5,6);
+INSERT INTO `tiene` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4);
 /*!40000 ALTER TABLE `tiene` ENABLE KEYS */;
 UNLOCK TABLES;
 
