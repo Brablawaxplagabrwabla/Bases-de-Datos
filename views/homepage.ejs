@@ -15,74 +15,87 @@
 
   <br><br><br>
 
-<!-- SELECCIONAR MEDICO/PACIENTE -->
-<div class="menuPM container">
-  <div class="section">
-    <div class="row">
-      <div class="col l3"></div>
-      <div class="col l6">
-        <div class="row center-align">
-          <a class="selectP" href="#">
-          <div style="padding: 0px;" class="col l6"><img class="responsive-img" src="https://i.imgur.com/UAhDdjf.png" alt="">
-          <div style="width: 100%; box-shadow: none; border-radius: 0px;" class="prueba123 btn-p waves-effect waves-light btn teal accent-4">INGRESO - PACIENTE</div>
+
+
+<body>
+<style>.parallax-container {height: 70%;} .seleccionarP:hover, .seleccionarM:hover{cursor: pointer;}</style>
+
+<div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br><br><br><br><br><br><br>
+
+        <div class="row">
+          
+          <div class="col l3"></div>
+            <div style="background: rgba(245, 245, 245, 1)" class="col l6 z-depth-1">
+              <div class="row">
+                <div style="color: whitesmoke;" class="col l6 teal accent-4 seleccionarP">
+                   <h6 class="flow-text center">PACIENTE</h6>
+                </div>
+                <div style="color: whitesmoke;" class="col l6 teal accent-4 seleccionarM">
+                   <h6 class="flow-text center">MÉDICO</h6>
+                </div>
+              </div> 
+          <!-- LOG IN MEDICO -->
+          <form method="PUT" action="/medico/mostrarPacientes/">
+            <div class="mSeleccionar container">
+              <div class="row center">
+                <h4 class="header col s12 m12 l12 flow-text">Introduzca su número de licencia médica</h4>
+                <div class="col s12 m4 l2"></div>
+                <div class="input-field col s12 m4 l8">
+                  <input id="licencia" type="number" class="validate" name="licencia">
+                  <label for="licencia">Número de licencia</label>
+                </div>
+                <div class="col s12 m4 l2"></div>
+              </div>
+            <div class="row center">
+              <input type="submit" id="download-button" class="btn-large waves-effect waves-light teal accent-4" value="Ver Pacientes"/>
+            </div>
+            <br><br><br>
           </div>
-          </a>
-          <a class="selectM" href="#">
-          <div style="padding: 0px;" class="col l6"><img class="responsive-img" src="https://i.imgur.com/rMdxoM9.png" alt="">
-          <div style="width: 100%; box-shadow: none; border-radius: 0px;" class="waves-effect waves-light btn teal accent-4">INGRESO - MÉDICO</div>
+          </form>            
+          <!-- LOG IN MEDICO -->
+
+          <!-- LOG IN PACIENTE -->
+          <form method="PUT" action="/paciente/showPaciente/">
+          <div class="pSeleccionar hide section no-pad-bot">
+            <div class="container">
+              <div class="row center">
+                <h4 class="header col s12 m12 l12 flow-text">Introduzca su cédula de identidad</h4>
+                <div class="col s12 m4 l2"></div>
+                <div class="input-field col s12 m4 l8">
+                  <input id="cedula" type="number" class="validate" name="cedula">
+                  <label for="cedula">Número de cedula</label>
+                </div>
+                <div class="col s12 m4 l2"></div>
+                <div class=" col s12 m12 l12">
+                  <input class="btn waves-effect waves-light" type="submit" value="Ingresar" ></input>
+                  <a type="submit" href="Paciente/Registro" id="boton-registrar download-button" class="btn waves-effect waves-light">Registrarse</a>
+                </div>
+                </form>
+              </div>
+            </div>
+            <br><br><br>
           </div>
-          </a>
+
+
         </div>
-      </div>
-      <div class="col l3"></div>
-    </div>
-  </div>
-  <br><br>
-</div>
-<!-- FIN SELECCIONAR MEDICO PACIENTE -->
-
-<!-- LOG IN MEDICO -->
-<form method="PUT" action="/medico/mostrarPacientes/">
-<div class="menuM hide section no-pad-bot">
-  <div class="container">
-    <div class="row center">
-      <h4 class="header col s12 m12 l12 light">Introduzca su número de licencia médica</h4>
-      <div class="input-field col s12 m4 l4">
-        <input id="licencia" type="number" class="validate" name="licencia">
-        <label for="licencia">Número de licencia</label>
-      </div>
-      <div class="col m4 l4"></div>
-    </div>
-  </div>
-  <div class="row center">
-    <input type="submit" id="download-button" class="btn-large waves-effect waves-light teal accent-4" value="Ver Pacientes"/>
-  </div>
-  <br><br><br>
-</div>
-</form>
-<!-- Fin login medico -->
-<!-- Login Pacientes -->
-<div class="menuP hide section no-pad-bot">
-  <div class="container">
-    <div class="row center">
-      <form method="PUT" action="/paciente/showPaciente/">
-      <h4 class="header col s12 light">Introduzca su cédula de identidad</h4>
-      <div class="input-field col s12 m4 l4">
-        <input id="cedula" type="number" class="validate" name="cedula">
-        <label for="cedula">Número de cedula</label>
-      </div>
-      <div class=" col s12 m4 l4">
-        <input class="btn waves-effect waves-light" type="submit" value="Ingresar" ></input>
-        <a type="submit" href="Paciente/Registro" id="boton-registrar download-button" class="btn waves-effect waves-light">Registrarse</a>
-      </div>
-      </form>
-    </div>
-  </div>
-  <br><br><br>
-</div>
-<!-- FIN LOG IN PACIENTES -->
 
 
+        <br> <br> <br> <br> <br> <br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="https://i.imgur.com/JwR81vo.png" alt="">
+    </div>
+  </div>
+  <br>
+</div>
+
+
+
+<br><br><br><br>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -91,19 +104,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script>
     $(document).ready(function(){
-        $(".selectP").click(function(){
-            $(".menuP").removeClass("hide");
-            $(".menuPM").addClass("hide");
+      $('.parallax').parallax();
+    });
+    $(document).ready(function(){
+      $('.seleccionarP').click(function(){
+          $('.pSeleccionar').removeClass("hide");
+          $('.mSeleccionar').addClass("hide");
         });
-
-        $(".selectM").click(function(){
-            $(".menuM").removeClass("hide");
-            $(".menuPM").addClass("hide");
+      $('.seleccionarM').click(function(){
+          $('.mSeleccionar').removeClass("hide");
+          $('.pSeleccionar').addClass("hide");
         });
     });
   </script>
 
-
   </body>
-  </html>
-
+</html>
