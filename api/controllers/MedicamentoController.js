@@ -61,9 +61,9 @@ module.exports = {
 
   verMedicamentos: function(req,res) {
     var aux = req.param('id');
-    Medicamento.query('Select medicamento.idMedicamento, medicamento.NomComercial from compactivos '+
-    'INNER JOIN medicamento ON compactivos.Medicamento_idMedicamento = medicamento.idMedicamento ' +
-    'where medicamento.NomComercial = \"'+aux+'\";', function(err, result){
+    Medicamento.query('Select medicamento.idMedicamento, medicamento.NomComercial from medicamento '+
+    'INNER JOIN compactivos ON compactivos.Medicamento_idMedicamento = medicamento.idMedicamento ' +
+    'where compactivos.CompActivos = \"'+aux+'\";', function(err, result){
       if (err) sails.log(err);
       sails.log('Select medicamento.idMedicamento, medicamento.NomComercial from compactivos '+
     'INNER JOIN medicamento ON compactivos.Medicamento_idMedicamento = medicamento.idMedicamento ' +
