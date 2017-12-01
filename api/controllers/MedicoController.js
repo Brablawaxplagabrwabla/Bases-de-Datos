@@ -76,7 +76,7 @@ module.exports = {
       'INNER JOIN especialidades ON medico.idMedico = especialidades.Medico_idMedico ' +
       'INNER JOIN especialidad ON especialidades.Especialidad_idEspecialidad = especialidad.idEspecialidad ' +
       'GROUP BY consulta.Medico_idMedico '+
-      'ORDER BY Consultas;', function(err, result){
+      'ORDER BY Consultas DESC;', function(err, result){
         sails.log(result);
         res.view({
           matriz : result,
