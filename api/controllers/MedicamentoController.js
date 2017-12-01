@@ -63,7 +63,7 @@ module.exports = {
     var aux = req.param('id');
     Medicamento.query("select medicamento.idMedicamento, medicamento.NomComercial from medicamento"
                       +"inner join compactivos on medicamento.idMedicamento = compactivos.Medicamento_idMedicamento"
-                      +"where medicamento.NomComercial = "+aux+, function(err, result){
+                      +"where medicamento.NomComercial = "+aux, function(err, result){
       if (err) sails.log(err);
       if (result) {
         aux = JSON.parse(JSON.stringify(result));
