@@ -62,7 +62,7 @@ module.exports = {
   verMedicamentos: function(req,res) {
     var aux = req.param('id');
     Medicamento.query("select medicamento.idMedicamento, medicamento.NomComercial from medicamento "
-                      +"inner join compactivos on medicamento.idMedicamento = compactivos.Medicamento_idMedicamento"
+                      +"inner join compactivos on medicamento.idMedicamento = compactivos.Medicamento_idMedicamento "
                       +"where medicamento.NomComercial = '"+aux+"'", function(err, result){
       if (err) sails.log(err);
       sails.log("select medicamento.idMedicamento, medicamento.NomComercial from medicamento"
